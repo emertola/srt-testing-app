@@ -9,7 +9,10 @@ var cors = require("cors");
 var index = require("./routes/index");
 var users = require("./routes/users");
 
-var chTest = require("./routes/webdriver/chrome");
+var chromeTest = require("./routes/webdriver/chrome");
+var firefoxTest = require("./routes/webdriver/firefox");
+var edgeTest = require("./routes/webdriver/edge");
+var ieTest = require("./routes/webdriver/ie");
 
 var app = express();
 
@@ -28,7 +31,10 @@ app.use(cors());
 
 app.use("/", index);
 app.use("/users", users);
-app.use("/webdriver/chrome", chTest);
+app.use("/webdriver/chrome", chromeTest);
+app.use("/webdriver/firefox", firefoxTest);
+app.use("/webdriver/edge", edgeTest);
+app.use("/webdriver/ie", ieTest);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

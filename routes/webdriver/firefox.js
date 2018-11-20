@@ -2,15 +2,11 @@ var express = require("express");
 var router = express.Router();
 
 var webdriver = require("selenium-webdriver");
-var chrome = require("selenium-webdriver/chrome");
-var path = require("chromedriver").path;
-
-var service = new chrome.ServiceBuilder(path).build();
-chrome.setDefaultService(service);
+var firefox = require("selenium-webdriver/firefox");
 
 router.post("/", function(req, res, next) {
   var driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
+    .forBrowser("firefox")
     .build();
 
   if (req.body.user) {

@@ -2,16 +2,17 @@ var express = require("express");
 var router = express.Router();
 
 var webdriver = require("selenium-webdriver");
-var chrome = require("selenium-webdriver/chrome");
-var path = require("chromedriver").path;
+var edge = require("selenium-webdriver/edge");
 
-var service = new chrome.ServiceBuilder(path).build();
-chrome.setDefaultService(service);
+var service = new edge.ServiceBuilder().setPort(55555).build();
+
+var options = new edge.Options();
+// configure browser options ...
+
+
 
 router.post("/", function(req, res, next) {
-  var driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
-    .build();
+    var driver = edge.Driver.createSession(options, service);
 
   if (req.body.user) {
     driver.get(req.body.url);
