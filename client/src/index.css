@@ -1,0 +1,293 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+body {
+  background-color: #eceff1 !important;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+/* Other Customs */
+
+.table-custom {
+  margin: 20px 0;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.table-custom thead {
+  background-color: #eeeeee;
+}
+
+.table-custom tbody {
+  background-color: #fafafa;
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 20px 25px !important;
+  color: #4a4a4a;
+  font-size: 14px;
+  vertical-align: middle !important;
+}
+
+.table-custom td {
+  color: #424242;
+  font-size: 16px;
+}
+
+.table-custom th {
+  font-weight: semibold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.table-custom tbody tr:hover {
+  background-color: #f5f8fc;
+}
+
+/* End of Other Customs */
+
+
+/* Buttons */
+.btn-nav-custom {
+  background-color: transparent;
+  color: #2196f3;
+  font-size: 32px !important;
+}
+
+.btn-primary-custom {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.btn-primary-custom:hover {
+  background-color: #1E88E5;
+  color: #fff;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #E0E0E0 !important;
+}
+
+.btn-transparent {
+  background-color: transparent !important;
+}
+
+.btn-transparent:hover {
+  text-decoration: underline !important;
+}
+
+
+.btn-circular {
+  border-radius: 50px !important;
+  font-size: 20px !important;
+  margin: 0 5px;
+  background-color: transparent;
+  padding: 3px 8px !important;
+  opacity: 0.6
+}
+
+.btn-circular:hover {
+  background-color: #EEEEEE;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.btn-rounded {
+  border-radius: 25px !important;
+}
+/* End of Buttons */
+
+/* Header */
+.navbar-custom {
+  padding: 30px 25px !important;
+  margin-bottom: 50px;
+  background-color: #fff;
+  border-top: 6px solid #2196f3;
+  box-shadow: 3px 0 5px 0 #bdbdbd;
+}
+
+.navbar-custom a {
+  color: #2196f3;
+}
+/* End of Header */
+
+/* Sidebar - Codes */
+.codes-container {
+  margin-left: 70px;
+}
+
+
+
+/* The side navigation menu */
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: #616161;
+  padding: 10px;
+  text-decoration: none;
+  border-left: 4px solid #eceff1 !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  padding-left: 20px;
+}
+
+/* Active/current link */
+.sidebar a.activeLink {
+  background-color: #fafafa;
+  border-left: 4px solid #2196f3 !important;
+  text-decoration: none;
+  color: #212121;
+  font-weight: 600;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.activeLink) {
+  background-color: #fafafa;
+  border-left: 4px solid #2196f3 !important;
+  text-decoration: none;
+  color: #212121;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+div.content {
+  margin-left: 300px;
+  min-height: 500px;
+  width: 75%;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 20px 20px 0;
+  }
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+  .codes-container {
+    margin: 0;
+  }
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+
+  div.content {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+}
+
+/* End of Sidebar - Codes */
+
+/* Fullscreen Main Navigation */
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */
+  height: 100%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0); /* Black fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  background-color: transparent;
+  color: #818181 !important;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+/* End of Fullscreen Main Navigation */
+
+/* Testing Page */
+.card-custom,
+.card-custom-user {
+  margin-bottom: 10px;
+}
+
+.card-custom .card-header {
+  color: #2196f3;
+}
+/* End of Testing Page */
