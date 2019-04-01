@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Button } from "reactstrap";
 
-import AddLink from './AddLink'
-import AddUser from './AddUser'
+import AddLink from "./AddLink";
+import AddUser from "./AddUser";
 import UseDetails from "./UseDetails";
 
 class Testing extends Component {
@@ -18,6 +19,7 @@ class Testing extends Component {
     this.openBrowser = this.openBrowser.bind(this);
     this.addUserObj = this.addUserObj.bind(this);
     this.removeUser = this.removeUser.bind(this);
+    this.toggle = this.toggle.bind(this);
   }
 
   urlChange(e) {
@@ -57,20 +59,53 @@ class Testing extends Component {
     });
   }
 
+  toggle() {
+    this.setState(prevState => ({
+      modalOpen: !prevState.modalOpen
+    }));
+  }
+
+  importDetails() {
+    navigator.clipboard.readText().then(text => {
+      let a = text.split("|")
+      this.setState({
+        url: a[0],
+        users: JSON.parse(a[1])
+      })
+    })
+  }
+
+
+
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <AddLink urlChange={this.urlChange} openBrowser={this.openBrowser} />
-          <AddUser openBrowser={this.openBrowser}
-          addUserObj={this.addUserObj} />
-          
-          <UseDetails
-            users={this.state.users}
-            openBrowser={this.openBrowser}
-            removeUser={this.removeUser}
-          />
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-right">
+              <Button color="secondary" onClick={() => this.importDetails()}>
+                Import details
+              </Button>
+            </div>
+            <AddLink
+              urlChange={this.urlChange}
+              openBrowser={this.openBrowser}
+              importURL={this.state.url}
+            />
+            <AddUser
+              openBrowser={this.openBrowser}
+              addUserObj={this.addUserObj}
+            />
+
+            <UseDetails
+              users={this.state.users}
+              openBrowser={this.openBrowser}
+              removeUser={this.removeUser}
+            />
+          </div>
         </div>
+
+       
       </div>
     );
   }

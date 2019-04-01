@@ -42,8 +42,13 @@ router.post("/", function(req, res, next) {
                   driver
                     .findElements({ id: "submitLoginButton" })
                     .then(found => {
-                      console.log("Submit Button Found");
-                      driver.findElement({ id: "submitLoginButton" }).click();
+                      if (found.length > 0) {
+                        driver.findElement({ id: "submitLoginButton" }).click();
+                        console.log("RC Submit Button Found");
+                      } else {
+                        driver.findElement({ id: "buttonLogin" }).click();
+                        console.log("RC Tax Submit Button Found");
+                      }
                     });
                 });
             }, 500);

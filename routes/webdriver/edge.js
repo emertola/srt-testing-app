@@ -9,10 +9,8 @@ var service = new edge.ServiceBuilder().setPort(55555).build();
 var options = new edge.Options();
 // configure browser options ...
 
-
-
 router.post("/", function(req, res, next) {
-    var driver = edge.Driver.createSession(options, service);
+  var driver = edge.Driver.createSession(options, service);
 
   if (req.body.user) {
     driver.get(req.body.url);
@@ -43,8 +41,13 @@ router.post("/", function(req, res, next) {
                   driver
                     .findElements({ id: "submitLoginButton" })
                     .then(found => {
-                      console.log("Submit Button Found");
-                      driver.findElement({ id: "submitLoginButton" }).click();
+                      if (found.length > 0) {
+                        driver.findElement({ id: "submitLoginButton" }).click();
+                        console.log("RC Submit Button Found");
+                      } else {
+                        driver.findElement({ id: "buttonLogin" }).click();
+                        console.log("RC Tax Submit Button Found");
+                      }
                     });
                 });
             }, 500);

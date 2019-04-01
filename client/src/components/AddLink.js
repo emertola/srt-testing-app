@@ -19,6 +19,7 @@ const AddLink = props => {
                   className="form-control"
                   placeholder="Type your URL here..."
                   onChange={props.urlChange}
+                  value={props.importURL}
                 />
               </div>
             </div>

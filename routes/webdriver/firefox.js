@@ -5,9 +5,7 @@ var webdriver = require("selenium-webdriver");
 var firefox = require("selenium-webdriver/firefox");
 
 router.post("/", function(req, res, next) {
-  var driver = new webdriver.Builder()
-    .forBrowser("firefox")
-    .build();
+  var driver = new webdriver.Builder().forBrowser("firefox").build();
 
   if (req.body.user) {
     driver.get(req.body.url);
@@ -38,8 +36,13 @@ router.post("/", function(req, res, next) {
                   driver
                     .findElements({ id: "submitLoginButton" })
                     .then(found => {
-                      console.log("Submit Button Found");
-                      driver.findElement({ id: "submitLoginButton" }).click();
+                      if (found.length > 0) {
+                        driver.findElement({ id: "submitLoginButton" }).click();
+                        console.log("RC Submit Button Found");
+                      } else {
+                        driver.findElement({ id: "buttonLogin" }).click();
+                        console.log("RC Tax Submit Button Found");
+                      }
                     });
                 });
             }, 500);
